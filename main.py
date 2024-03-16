@@ -44,16 +44,17 @@ for i in n:
 Y1 = sp.fft(x)
 Y2 = sp.ifft(Y1)
 
-# plt.figure(figsize=(10, 8))
-# plt.plot(n, Y1, 'pink')
-# plt.title("ДНФ")
+plt.figure(figsize=(10, 8))
+plt.plot(n, Y1, 'pink')
+plt.title("ДНФ")
 
 # plt.figure(figsize=(10, 8))
 # plt.plot(n, Y2, 'green')
 # plt.title("ОДНФ")
 
 # пункт 5
-Y3 = Y1[:len(Y1)//2]/(4096//4)
+Y1temp = Y1
+Y3 = Y1temp[:len(Y1temp)//2]/(4096//4)
 
 # пункт 6
 
@@ -97,14 +98,29 @@ Y11filtered = sp.ifft(Y1filtered)
 # plt.title("ОДНФ отфильтрованный от " + str(filter) + "кГЦ")
 
 # пункт 11
+A2 = [1,5,3,7,3,2]
+
+f2 = [i*1000 for i in [0.5,1,2,5,7,9]]
+
+x2 = [0 for i in range(0,127)]
+
+fd2 = 4*max(f2)
+Td2 = 1/fd2
+tns2 = []
+
+for i in n:
+    tn = i * Td2
+    tns2.append(tn)
+    for k in range(0,7):
+        x2[i] += A2[k] * math.sin(2*math.pi*f2[k]*tn)
 
 # plt.figure(figsize=(10, 8))
 # plt.plot(fi, Y1unfiltered, 'violet')
 # plt.title("ДНФ Обратно отфильтрованный от " + str(filter) + "кГЦ")
 
 # plt.figure(figsize=(10, 8))
-# plt.plot(tns, Y1unfiltered, 'violet')
-# plt.plot(tns, Y1filtered, 'teal')
+# plt.plot(fi, Y1unfiltered, 'violet')
+# plt.plot(fi, Y1filtered, 'teal')
 # plt.title("Сравнение")
 
 # пункт 12
@@ -113,9 +129,10 @@ Y11unfiltered = sp.ifft(Y1unfiltered)
 # plt.plot(tns, Y11unfiltered, 'violet')
 # plt.title("ОДНФ Обратно отфильтрованный от " + str(filter) + "кГЦ")
 
-plt.figure(figsize=(10, 8))
-plt.plot(tns, Y11filtered, 'teal')
-plt.plot(tns, Y11unfiltered, 'violet')
-plt.title("Сравнение ОДНФ фильтр и обратно фильтр")
+# plt.figure(figsize=(10, 8))
+# plt.plot(tns, Y11filtered, 'teal')
+# plt.plot(tns, Y11unfiltered, 'violet')
+# plt.title("Сравнение ОДНФ фильтр и обратно фильтр")
+
 
 plt.show()
