@@ -7,6 +7,9 @@ samples = 127
 
 n = range(0,samples)
 
+# в гц
+filter = 10000
+
 A = [1,5,3,7,3,2,1]
 
 f = [i*1000 for i in [0.5,1,2,5,7,9,12]]
@@ -17,6 +20,7 @@ tns = []
 x = [0 for i in range(0,127)]
 
 print(A)
+
 
 for i in n:
     tn = i * Td
@@ -40,29 +44,28 @@ for i in n:
 Y1 = sp.fft(x)
 Y2 = sp.ifft(Y1)
 
-# plt.figure(figsize=(10, 8))
-# plt.plot(n, Y1, 'pink')
-# plt.title("ДНФ")
+plt.figure(figsize=(10, 8))
+plt.plot(n, Y1, 'pink')
+plt.title("ДНФ")
 
 # plt.figure(figsize=(10, 8))
 # plt.plot(n, Y2, 'green')
 # plt.title("ОДНФ")
-
-# plt.show()
 
 # пункт 5
 Y3 = Y1[:len(Y1)//2]/(4096//4)
 
 # пункт 6
 
-N2 = int(samples/2)
+N2 = samples//2
 
 Fstep = fd/N2
 
-fi = [n[i]*Fstep for i in range(0,N2)]
+fi = [n[i] * Fstep for i in range(0,samples)]
+fi2 = [n[i]*Fstep for i in range(0,N2)]
 
 # plt.figure(figsize=(10, 8))
-# plt.plot(fi, Y3, 'violet')
+# plt.plot(fi2, Y3, 'violet')
 # plt.title("Нормализованный сигнал по частотам")
 
 # plt.figure(figsize=(10, 8))
@@ -71,4 +74,18 @@ fi = [n[i]*Fstep for i in range(0,N2)]
 
 # plt.show()
 
-# пункт 7
+# пункт 7-8
+
+Y1filtered = Y1
+for i in range(0,len(fi)//2):
+    if fi[i] >= filter:
+        Y1filtered[i] = 0;
+        Y1filtered[len(Y1filtered)-i] = 0;
+   
+
+print(fi)
+plt.figure(figsize=(10, 8))
+plt.plot(fi, Y1filtered, 'teal')
+plt.title("ДНФ отфильтрованный до " + str(filter) + "кГЦ")
+
+plt.show()
