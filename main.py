@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-
+import scipy.fft as sp
 import math
 samples = 127
 
@@ -24,13 +24,23 @@ for i in n:
 
 # print(x)
         
-plt.figure(figsize=(10, 8))
-plt.plot(n, x, 'b')
-plt.title("Дискретный сигнал по семплам")
+# plt.figure(figsize=(10, 8))
+# plt.plot(n, x, 'b')
+# plt.title("Дискретный сигнал по семплам")
 
+# plt.figure(figsize=(10, 8))
+# plt.plot(tns, x, 'r')
+# plt.title("Дискретный сигнал по абсолютному времени")
+
+Y1 = sp.fft(x)
+Y2 = sp.ifft(Y1)
 
 plt.figure(figsize=(10, 8))
-plt.plot(tns, x, 'r')
-plt.title("Дискретный сигнал по абсолютному времени")
+plt.plot(n, Y1, 'pink')
+plt.title("ДНФ")
+
+plt.figure(figsize=(10, 8))
+plt.plot(n, Y2, 'green')
+plt.title("ОДНФ")
+
 plt.show()
-
