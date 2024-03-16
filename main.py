@@ -85,25 +85,37 @@ for i in range(0,len(fi)//2):
    
 
 print(fi)
-plt.figure(figsize=(10, 8))
-plt.plot(fi, Y1filtered, 'teal')
-plt.title("ДНФ отфильтрованный от " + str(filter) + "кГЦ")
+# plt.figure(figsize=(10, 8))
+# plt.plot(fi, Y1filtered, 'teal')
+# plt.title("ДНФ отфильтрованный от " + str(filter) + "кГЦ")
 
 
 # пункт 9-10
-# Y11filtered = sp.ifft(Y1filtered)
+Y11filtered = sp.ifft(Y1filtered)
 # plt.figure(figsize=(10, 8))
-# plt.plot(tn, Y11filtered, 'yellow')
+# plt.plot(tns, Y11filtered, 'teal')
 # plt.title("ОДНФ отфильтрованный от " + str(filter) + "кГЦ")
 
 # пункт 11
 
-plt.figure(figsize=(10, 8))
-plt.plot(fi, Y1unfiltered, 'violet')
-plt.title("ДНФ Обратно отфильтрованный от " + str(filter) + "кГЦ")
+# plt.figure(figsize=(10, 8))
+# plt.plot(fi, Y1unfiltered, 'violet')
+# plt.title("ДНФ Обратно отфильтрованный от " + str(filter) + "кГЦ")
+
+# plt.figure(figsize=(10, 8))
+# plt.plot(tns, Y1unfiltered, 'violet')
+# plt.plot(tns, Y1filtered, 'teal')
+# plt.title("Сравнение")
+
+# пункт 12
+Y11unfiltered = sp.ifft(Y1unfiltered)
+# plt.figure(figsize=(10, 8))
+# plt.plot(tns, Y11unfiltered, 'violet')
+# plt.title("ОДНФ Обратно отфильтрованный от " + str(filter) + "кГЦ")
 
 plt.figure(figsize=(10, 8))
-plt.plot(fi, Y1unfiltered, 'violet')
-plt.plot(fi, Y1filtered, 'teal')
-plt.title("Сравнение")
+plt.plot(tns, Y11filtered, 'teal')
+plt.plot(tns, Y11unfiltered, 'violet')
+plt.title("Сравнение ОДНФ фильтр и обратно фильтр")
+
 plt.show()
