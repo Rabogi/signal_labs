@@ -27,7 +27,9 @@ for i in n:
 plt.figure(figsize=(10, 8))
 plt.plot(n, x, 'b')
 plt.title("Дискретный сигнал по семплам")
-plt.show()
+
+
+plt.figure(figsize=(10, 8))
 plt.plot(tns, x, 'r')
 plt.title("Дискретный сигнал по абсолютному времени")
 plt.show()
