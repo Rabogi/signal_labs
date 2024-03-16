@@ -44,9 +44,9 @@ for i in n:
 Y1 = sp.fft(x)
 Y2 = sp.ifft(Y1)
 
-plt.figure(figsize=(10, 8))
-plt.plot(n, Y1, 'pink')
-plt.title("ДНФ")
+# plt.figure(figsize=(10, 8))
+# plt.plot(n, Y1, 'pink')
+# plt.title("ДНФ")
 
 # plt.figure(figsize=(10, 8))
 # plt.plot(n, Y2, 'green')
@@ -72,13 +72,14 @@ fi2 = [n[i]*Fstep for i in range(0,N2)]
 # plt.plot([i for i in range(0,N2)], Y3, 'black')
 # plt.title("Нормализованный сигнал по сэмплам")
 
-# plt.show()
-
 # пункт 7-8
 
 Y1filtered = Y1
+Y1unfiltered = [0 for i in range(0,127)]
 for i in range(0,len(fi)//2):
-    if fi[i] >= filter:
+    if fi[i] > filter:
+        Y1unfiltered[i] = Y1filtered[i];
+        Y1unfiltered[len(Y1unfiltered)-i] = Y1filtered[len(Y1filtered)-i];
         Y1filtered[i] = 0;
         Y1filtered[len(Y1filtered)-i] = 0;
    
@@ -86,6 +87,23 @@ for i in range(0,len(fi)//2):
 print(fi)
 plt.figure(figsize=(10, 8))
 plt.plot(fi, Y1filtered, 'teal')
-plt.title("ДНФ отфильтрованный до " + str(filter) + "кГЦ")
+plt.title("ДНФ отфильтрованный от " + str(filter) + "кГЦ")
 
+
+# пункт 9-10
+# Y11filtered = sp.ifft(Y1filtered)
+# plt.figure(figsize=(10, 8))
+# plt.plot(tn, Y11filtered, 'yellow')
+# plt.title("ОДНФ отфильтрованный от " + str(filter) + "кГЦ")
+
+# пункт 11
+
+plt.figure(figsize=(10, 8))
+plt.plot(fi, Y1unfiltered, 'violet')
+plt.title("ДНФ Обратно отфильтрованный от " + str(filter) + "кГЦ")
+
+plt.figure(figsize=(10, 8))
+plt.plot(fi, Y1unfiltered, 'violet')
+plt.plot(fi, Y1filtered, 'teal')
+plt.title("Сравнение")
 plt.show()
