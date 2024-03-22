@@ -20,6 +20,7 @@ Td = 1/fd
 t = []
 x = []
 
+# Построение изначального сигнала сигнала по семплам
 for n in samples:
     t.append(n * Td)
     x.append(0)
@@ -38,4 +39,18 @@ axs[1].plot(t, x, 'r')
 
 plt.show()
 
+# Пункт 3
 
+# Построение ДПФ ОДПФ
+dpfx = sp.fft(x)
+odpfx = sp.ifft(dpfx)
+
+fig, axs = plt.subplots(ncols=2,nrows=1,figsize=(16, 6))
+
+axs[0].set_title("ДПФ")
+axs[0].plot(list(samples), dpfx, 'pink')
+
+axs[1].set_title("ОДНФ")    
+axs[1].plot(list(samples), odpfx, 'green')
+
+plt.show()
