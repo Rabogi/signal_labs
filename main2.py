@@ -2,14 +2,16 @@ import matplotlib.pyplot as plt
 import scipy.fft as sp
 import math
 
+sw = True
+
 N = 128
-
-samples = range(0,N-1)
-
 filter = 10000
-
 A = [1,5,3,7,3,2,1]
 f = [0.5,1,2,5,7,9,12]
+
+samples = range(0,N)
+
+
 k = 7
 pi = math.pi
 
@@ -39,7 +41,8 @@ axs[0].plot(list(samples), x, 'b')
 axs[1].set_title("Дискретный сигнал по абсолютному времени")    
 axs[1].plot(t, x, 'r')
 
-plt.show()
+if sw:
+    plt.show()
 
 # Пункт 3 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -56,7 +59,8 @@ axs[0].plot(list(samples), dpfx, 'pink')
 axs[1].set_title("ОДНФ")    
 axs[1].plot(list(samples), odpfx, 'green')
 
-plt.show()
+if sw:
+    plt.show()
 
 # Пункт 5 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -79,6 +83,42 @@ axs[0].plot(fn, dpfx_normal, 'teal')
 axs[1].set_title("Нормализованный спектр исходного сигнала в сэмплах")
 axs[1].plot(list(range(0,N2)), dpfx_normal, 'violet')
 
-plt.show()
+if sw:
+    plt.show()
 
 # Пункт 7 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+dpfx_filtered = dpfx
+fn_real = [i*fstep for i in range(0,N)]
+# Фильтрация
+for i in range(0,len(dpfx_filtered)//2+1):
+    if fn_real[i] > 10000:
+        dpfx_filtered[i] = 0
+        dpfx_filtered[len(dpfx_filtered)-i] = 0
+
+
+dpfx_filtered = list(dpfx_filtered)
+
+# Пункт 8 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+# fn_real = fn + list(reversed([-i for i in fn]))
+
+plt.figure(figsize=(8,6))
+plt.plot(fn_real,dpfx_filtered,"blue",)
+plt.title("Отфильтрованный спектр (от 10КГЦ) по абсолютным частотам")
+
+if sw:
+    plt.show()
+
+# Пункт 9 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+odpfx_filtered = list(sp.ifft(dpfx_filtered))
+
+# Пункт 10 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+plt.figure(figsize=(8,6))
+plt.plot(t,odpfx_filtered,"red",)
+plt.title("Отфильтрованный сигнал (от 10КГЦ) по абсолютным частотам")
+
+if sw:
+    plt.show()
