@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import scipy.fft as sp
 import math
 
-samples = range(1,128)
+samples = range(0,127)
 
 filter = 10000
 
@@ -24,10 +24,18 @@ for n in samples:
     t.append(n * Td)
     x.append(0)
     for i in range(0,k):
-        x[n] += A[k] * math.sin(2*pi*f[k]*t[n])
+        x[n] += A[i] * math.sin(2*pi*f[i]*t[n])
 
 # Пункт 2
         
+fig, axs = plt.subplots(ncols=2,nrows=1,figsize=(16, 6))
 
-    
+axs[0].set_title("Дискретный сигнал по сэмплам")
+axs[0].plot(list(samples), x, 'b')
+
+axs[1].set_title("Дискретный сигнал по абсолютному времени")    
+axs[1].plot(t, x, 'r')
+
+plt.show()
+
 
