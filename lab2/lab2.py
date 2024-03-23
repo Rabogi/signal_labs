@@ -40,9 +40,29 @@ xdpf = sp.fft(x)
 
 # Пункт 3 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-def Wf(x):
-    return (math.e**(cmath.sqrt(-1)*2*(pi/N)*x))
-
-def B(A,B,W):
+def Bab(A,B,W):
     return [A+B*W,A-B*W]
+
+# Пункт 4 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+def Wf(x):
+    return ((math.e**(cmath.sqrt(-1)*2*(pi/N)*x)).real)
+
+# Пункт 5 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+gen = []
+gen.append(x)
+
+def BabL(AB,k):
+    AB_out = [0 for i in range(0,len(AB))]
+    lenH = len(AB)//2
+    for i in range(0,lenH):
+        AB_out[i],AB_out[i+lenH] = Bab(AB[i],AB[i+lenH],Wf(k))
+    return AB_out
+
+gen.append(BabL(gen[0],0))
+
+for i in range(0,len(gen[0])):
+    print(str(gen[0][i]) + " -> " + str(gen[1][i]))
+
 
