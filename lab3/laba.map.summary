@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Sat Apr 06 17:08:03 2024
+Analysis & Synthesis Status : Successful - Sat Apr 06 17:53:59 2024
 Quartus II Version : 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition
 Revision Name : laba
 Top-level Entity Name : babl
 Family : Stratix II
 Logic utilization : N/A
     Combinational ALUTs : 16
-    Dedicated logic registers : 0
-Total registers : 0
-Total pins : 64
+    Dedicated logic registers : 16
+Total registers : 16
+Total pins : 65
 Total virtual pins : 0
 Total block memory bits : 0
 DSP block 9-bit elements : 4

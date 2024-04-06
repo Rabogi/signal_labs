@@ -120,7 +120,7 @@ applicable agreement for further details.
 	(input)
 	(rect 56 288 224 304)
 	(text "INPUT" (rect 133 0 161 10)(font "Arial" (font_size 6)))
-	(text "clk" (rect 5 0 19 12)(font "Arial" ))
+	(text "clk" (rect 9 0 23 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 92 12)(pt 117 12)(line_width 1))
@@ -134,7 +134,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 800 440 976 456)
+	(rect 872 440 1048 456)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "O_A_Im[7..0]" (rect 90 0 156 12)(font "Arial" ))
 	(pt 0 8)
@@ -150,7 +150,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 800 216 976 232)
+	(rect 872 216 1048 232)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "O_A_Re[7..0]" (rect 90 0 157 12)(font "Arial" ))
 	(pt 0 8)
@@ -192,8 +192,8 @@ applicable agreement for further details.
 	(port
 		(pt 168 72)
 		(output)
-		(text "result[7..0]" (rect 0 0 60 14)(font "Arial" (font_size 8)))
-		(text "result[7..0]" (rect 114 59 174 73)(font "Arial" (font_size 8)))
+		(text "result[15..0]" (rect 0 0 67 14)(font "Arial" (font_size 8)))
+		(text "result[15..0]" (rect 108 59 175 73)(font "Arial" (font_size 8)))
 		(line (pt 168 72)(pt 104 72)(line_width 3))
 	)
 	(drawing
@@ -235,8 +235,8 @@ applicable agreement for further details.
 	(port
 		(pt 168 72)
 		(output)
-		(text "result[7..0]" (rect 0 0 60 14)(font "Arial" (font_size 8)))
-		(text "result[7..0]" (rect 114 59 174 73)(font "Arial" (font_size 8)))
+		(text "result[15..0]" (rect 0 0 67 14)(font "Arial" (font_size 8)))
+		(text "result[15..0]" (rect 108 59 175 73)(font "Arial" (font_size 8)))
 		(line (pt 168 72)(pt 104 72)(line_width 3))
 	)
 	(drawing
@@ -251,7 +251,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 600 392 760 488)
+	(rect 672 392 832 488)
 	(text "lpm_add_sub0" (rect 38 1 137 17)(font "Arial" (font_size 10)))
 	(text "inst7" (rect 8 80 31 92)(font "Arial" ))
 	(port
@@ -295,7 +295,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 600 168 760 264)
+	(rect 672 168 832 264)
 	(text "lpm_add_sub1" (rect 38 1 137 17)(font "Arial" (font_size 10)))
 	(text "inst8" (rect 8 80 31 92)(font "Arial" ))
 	(port
@@ -366,8 +366,8 @@ applicable agreement for further details.
 	(port
 		(pt 168 72)
 		(output)
-		(text "result[7..0]" (rect 0 0 60 14)(font "Arial" (font_size 8)))
-		(text "result[7..0]" (rect 114 59 174 73)(font "Arial" (font_size 8)))
+		(text "result[15..0]" (rect 0 0 67 14)(font "Arial" (font_size 8)))
+		(text "result[15..0]" (rect 108 59 175 73)(font "Arial" (font_size 8)))
 		(line (pt 168 72)(pt 104 72)(line_width 3))
 	)
 	(drawing
@@ -409,8 +409,8 @@ applicable agreement for further details.
 	(port
 		(pt 168 72)
 		(output)
-		(text "result[7..0]" (rect 0 0 60 14)(font "Arial" (font_size 8)))
-		(text "result[7..0]" (rect 114 59 174 73)(font "Arial" (font_size 8)))
+		(text "result[15..0]" (rect 0 0 67 14)(font "Arial" (font_size 8)))
+		(text "result[15..0]" (rect 108 59 175 73)(font "Arial" (font_size 8)))
 		(line (pt 168 72)(pt 104 72)(line_width 3))
 	)
 	(drawing
@@ -637,56 +637,6 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 552 208)
-	(pt 600 208)
-	(bus)
-)
-(connector
-	(pt 760 224)
-	(pt 800 224)
-	(bus)
-)
-(connector
-	(pt 552 432)
-	(pt 600 432)
-	(bus)
-)
-(connector
-	(pt 760 448)
-	(pt 800 448)
-	(bus)
-)
-(connector
-	(pt 552 320)
-	(pt 560 320)
-	(bus)
-)
-(connector
-	(pt 600 240)
-	(pt 560 240)
-	(bus)
-)
-(connector
-	(pt 560 240)
-	(pt 560 320)
-	(bus)
-)
-(connector
-	(pt 600 464)
-	(pt 560 464)
-	(bus)
-)
-(connector
-	(pt 552 544)
-	(pt 560 544)
-	(bus)
-)
-(connector
-	(pt 560 544)
-	(pt 560 464)
-	(bus)
-)
-(connector
 	(text "clk" (rect 234 280 248 292)(font "Arial" ))
 	(pt 224 296)
 	(pt 264 296)
@@ -710,16 +660,6 @@ applicable agreement for further details.
 	(text "clk" (rect 354 488 368 500)(font "Arial" ))
 	(pt 344 504)
 	(pt 384 504)
-)
-(connector
-	(text "clk" (rect 570 432 584 444)(font "Arial" ))
-	(pt 560 448)
-	(pt 600 448)
-)
-(connector
-	(text "clk" (rect 570 208 584 220)(font "Arial" ))
-	(pt 560 224)
-	(pt 600 224)
 )
 (connector
 	(text "clk" (rect 586 88 600 100)(font "Arial" ))
@@ -787,5 +727,73 @@ applicable agreement for further details.
 	(text "W_I[7..0]" (rect 354 544 400 556)(font "Arial" ))
 	(pt 344 560)
 	(pt 384 560)
+	(bus)
+)
+(connector
+	(text "clk" (rect 642 432 656 444)(font "Arial" ))
+	(pt 632 448)
+	(pt 672 448)
+)
+(connector
+	(text "clk" (rect 642 208 656 220)(font "Arial" ))
+	(pt 632 224)
+	(pt 672 224)
+)
+(connector
+	(pt 832 448)
+	(pt 872 448)
+	(bus)
+)
+(connector
+	(pt 832 224)
+	(pt 872 224)
+	(bus)
+)
+(connector
+	(text "sm1[15..0]" (rect 562 192 615 204)(font "Arial" ))
+	(pt 600 208)
+	(pt 552 208)
+	(bus)
+)
+(connector
+	(text "sm2[15..0]" (rect 562 304 615 316)(font "Arial" ))
+	(pt 600 320)
+	(pt 552 320)
+	(bus)
+)
+(connector
+	(text "sm3[15..0]" (rect 562 416 615 428)(font "Arial" ))
+	(pt 600 432)
+	(pt 552 432)
+	(bus)
+)
+(connector
+	(text "sm4[15..0]" (rect 562 528 615 540)(font "Arial" ))
+	(pt 600 544)
+	(pt 552 544)
+	(bus)
+)
+(connector
+	(text "sm1[8..1]" (rect 634 192 681 204)(font "Arial" ))
+	(pt 672 208)
+	(pt 624 208)
+	(bus)
+)
+(connector
+	(text "sm2[8..1]" (rect 634 224 681 236)(font "Arial" ))
+	(pt 672 240)
+	(pt 624 240)
+	(bus)
+)
+(connector
+	(text "sm3[8..1]" (rect 634 416 681 428)(font "Arial" ))
+	(pt 672 432)
+	(pt 624 432)
+	(bus)
+)
+(connector
+	(text "sm4[8..1]" (rect 634 448 681 460)(font "Arial" ))
+	(pt 672 464)
+	(pt 624 464)
 	(bus)
 )
