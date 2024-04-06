@@ -22,7 +22,15 @@ def compSub(C1,C2):
 
     return complex(a - c,b - d)
 
-B = complex(2,1)
-W = complex(2,2)
+def Bab_2(A,B,W):
+    # print(W)
+    return [compSum(A,compMul(B,W)),compSub(A,compMul(B,W))]
 
-print(compMul(B,W))
+A = complex(1,7)
+B = complex(7,5)
+W = complex(2,7)
+
+print(Bab_2(A,B,W))
+
+# 0  0  0  0 | 0  0  0 0 | 0 0 0 0 | 0 0 0 0
+# 15 14 13 12  11 10 9 8   7 6 5 4   3 2 1 0
