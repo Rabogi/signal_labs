@@ -42,6 +42,7 @@ USE lpm.all;
 ENTITY lpm_add_sub0 IS
 	PORT
 	(
+		clock		: IN STD_LOGIC ;
 		dataa		: IN STD_LOGIC_VECTOR (7 DOWNTO 0);
 		datab		: IN STD_LOGIC_VECTOR (7 DOWNTO 0);
 		result		: OUT STD_LOGIC_VECTOR (7 DOWNTO 0)
@@ -59,6 +60,7 @@ ARCHITECTURE SYN OF lpm_add_sub0 IS
 	GENERIC (
 		lpm_direction		: STRING;
 		lpm_hint		: STRING;
+		lpm_pipeline		: NATURAL;
 		lpm_representation		: STRING;
 		lpm_type		: STRING;
 		lpm_width		: NATURAL
@@ -66,6 +68,7 @@ ARCHITECTURE SYN OF lpm_add_sub0 IS
 	PORT (
 			dataa	: IN STD_LOGIC_VECTOR (7 DOWNTO 0);
 			datab	: IN STD_LOGIC_VECTOR (7 DOWNTO 0);
+			clock	: IN STD_LOGIC ;
 			result	: OUT STD_LOGIC_VECTOR (7 DOWNTO 0)
 	);
 	END COMPONENT;
@@ -77,6 +80,7 @@ BEGIN
 	GENERIC MAP (
 		lpm_direction => "ADD",
 		lpm_hint => "ONE_INPUT_IS_CONSTANT=NO,CIN_USED=NO",
+		lpm_pipeline => 1,
 		lpm_representation => "SIGNED",
 		lpm_type => "LPM_ADD_SUB",
 		lpm_width => 8
@@ -84,6 +88,7 @@ BEGIN
 	PORT MAP (
 		dataa => dataa,
 		datab => datab,
+		clock => clock,
 		result => sub_wire0
 	);
 
@@ -100,8 +105,8 @@ END SYN;
 -- Retrieval info: PRIVATE: ConstantB NUMERIC "0"
 -- Retrieval info: PRIVATE: Function NUMERIC "0"
 -- Retrieval info: PRIVATE: INTENDED_DEVICE_FAMILY STRING "Stratix II"
--- Retrieval info: PRIVATE: LPM_PIPELINE NUMERIC "0"
--- Retrieval info: PRIVATE: Latency NUMERIC "0"
+-- Retrieval info: PRIVATE: LPM_PIPELINE NUMERIC "1"
+-- Retrieval info: PRIVATE: Latency NUMERIC "1"
 -- Retrieval info: PRIVATE: Overflow NUMERIC "0"
 -- Retrieval info: PRIVATE: RadixA NUMERIC "10"
 -- Retrieval info: PRIVATE: RadixB NUMERIC "10"
@@ -115,15 +120,18 @@ END SYN;
 -- Retrieval info: PRIVATE: nBit NUMERIC "8"
 -- Retrieval info: CONSTANT: LPM_DIRECTION STRING "ADD"
 -- Retrieval info: CONSTANT: LPM_HINT STRING "ONE_INPUT_IS_CONSTANT=NO,CIN_USED=NO"
+-- Retrieval info: CONSTANT: LPM_PIPELINE NUMERIC "1"
 -- Retrieval info: CONSTANT: LPM_REPRESENTATION STRING "SIGNED"
 -- Retrieval info: CONSTANT: LPM_TYPE STRING "LPM_ADD_SUB"
 -- Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "8"
+-- Retrieval info: USED_PORT: clock 0 0 0 0 INPUT NODEFVAL clock
 -- Retrieval info: USED_PORT: dataa 0 0 8 0 INPUT NODEFVAL dataa[7..0]
 -- Retrieval info: USED_PORT: datab 0 0 8 0 INPUT NODEFVAL datab[7..0]
 -- Retrieval info: USED_PORT: result 0 0 8 0 OUTPUT NODEFVAL result[7..0]
 -- Retrieval info: CONNECT: result 0 0 8 0 @result 0 0 8 0
 -- Retrieval info: CONNECT: @dataa 0 0 8 0 dataa 0 0 8 0
 -- Retrieval info: CONNECT: @datab 0 0 8 0 datab 0 0 8 0
+-- Retrieval info: CONNECT: @clock 0 0 0 0 clock 0 0 0 0
 -- Retrieval info: LIBRARY: lpm lpm.lpm_components.all
 -- Retrieval info: GEN_FILE: TYPE_NORMAL lpm_add_sub0.vhd TRUE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL lpm_add_sub0.inc FALSE
